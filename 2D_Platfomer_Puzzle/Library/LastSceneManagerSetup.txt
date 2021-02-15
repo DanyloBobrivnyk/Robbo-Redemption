@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/turrent.unity
+- path: Assets/Scenes/enemybetawithsword.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
