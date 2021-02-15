@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class turrent : MonoBehaviour
 {
-    public GameObject projectile;
-    public Transform shotpoint;
-    public float timebtwshots;
+    private GameObject projectile;
+    private Transform shotpoint;
+    private float timebtwshots;
 
     private float shottime;
 
     private Transform player;
 
+    private float dis;
+
+    public turrentstats stats;
+
     // Start is called before the first frame update
     void Start()
     {
+        projectile = stats.bullet;
+        timebtwshots = stats.timebeetweenshots;
+        dis = stats.distancefromplayer;
+        shotpoint = GetComponentInChildren<pointshoot>().transform;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -27,7 +35,7 @@ public class turrent : MonoBehaviour
 
 
         Debug.Log(distance);
-        if (distance <= 3)
+        if (distance <= dis)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);

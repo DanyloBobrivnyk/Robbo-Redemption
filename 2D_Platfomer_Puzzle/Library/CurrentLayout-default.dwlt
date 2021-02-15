@@ -15,7 +15,7 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
     x: 411
-    y: 55
+    y: 51
     width: 875
     height: 669
   m_ShowMode: 4
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 579, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 352
+  controlID: 41
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_LoadedToolbars:
   - {fileID: 19}
   m_MainToolbar: {fileID: 19}
-  m_LastLoadedLayoutName: Default
+  m_LastLoadedLayoutName: 
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 303, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 353
+  controlID: 42
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 303, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 308
+  controlID: 43
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 612
-    y: 85
+    y: 81
     width: 396
     height: 327
   m_ViewDataDictionary: {fileID: 0}
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 411
-    y: 433
+    y: 429
     width: 598
     height: 250
   m_ViewDataDictionary: {fileID: 0}
@@ -459,21 +459,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/turel stats
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/turel stats
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\adb\2D_Puzzle_Platformer\2D_Platfomer_Puzzle
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c3e0000
-    m_LastClickedID: 16012
-    m_ExpandedIDs: ffffffff000000005c3e00005e3e0000603e0000623e0000643e00008c3e0000
+    scrollPos: {x: 0, y: 26}
+    m_SelectedIDs: b23c0000
+    m_LastClickedID: 15538
+    m_ExpandedIDs: 00000000943c0000963c0000983c00009a3c00009c3c0000a23c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -501,7 +501,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000005c3e00005e3e0000603e0000623e0000643e0000
+    m_ExpandedIDs: 00000000943c0000963c0000983c00009a3c00009c3c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 1010
-    y: 85
+    y: 81
     width: 275
     height: 598
   m_ViewDataDictionary: {fileID: 0}
@@ -616,16 +616,16 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 411
-    y: 85
+    y: 81
     width: 200
     height: 327
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ace8ffff
-      m_LastClickedID: -5972
-      m_ExpandedIDs: 4aecffffaeecfffff4edffffaef0ffff
+      m_SelectedIDs: 283c0000
+      m_LastClickedID: 15400
+      m_ExpandedIDs: 5afbffff323c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 612
-    y: 85
+    y: 81
     width: 396
     height: 327
   m_ViewDataDictionary: {fileID: 0}

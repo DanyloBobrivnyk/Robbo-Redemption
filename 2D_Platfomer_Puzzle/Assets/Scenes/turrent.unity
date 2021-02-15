@@ -346,6 +346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1380578083}
+  - component: {fileID: 1380578084}
   m_Layer: 0
   m_Name: point
   m_TagString: Untagged
@@ -367,6 +368,18 @@ Transform:
   m_Father: {fileID: 1396044247}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1380578084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380578082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4bed621128c4449a5653f7cbe48f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1388375167
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,9 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4ca733744a1d8489ff6cef4f2f19b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2855433154113301824, guid: a4aa4ea6e2f0c954f8916c37ea87750e, type: 3}
-  shotpoint: {fileID: 1380578083}
-  timebtwshots: 1
+  stats: {fileID: 11400000, guid: 44fef40f70c8b074888ee2dcfdae051e, type: 2}
 --- !u!212 &1396044246
 SpriteRenderer:
   m_ObjectHideFlags: 0
