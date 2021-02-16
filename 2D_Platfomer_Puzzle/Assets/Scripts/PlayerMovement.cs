@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-
-	public CharacterController2D controller;
+	public CharacterController2D characterController;
 	public Animator animator;
 	public float runSpeed = 40f;
 	[HideInInspector] public bool jump = false;
@@ -15,14 +14,16 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 		//Get's controls, horizontalmove = left - -1 * runspeed or right +1 * runspeed
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
 		//Change animator parameter to always positive value
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove)); 
+		
 	}
-
 	void FixedUpdate ()
 	{
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		characterController.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
 	}
+	
 }

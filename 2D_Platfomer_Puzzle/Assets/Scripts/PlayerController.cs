@@ -1,19 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //This script is mentioned to controll hp and characters that was "consumed" by a player
-    
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject currentCharacter;
+
+    //It may be replaced by actions ?
+    // private void Awake() {
+    //     current = this;
+    // }
+    // public event Action onInfestKeyPressed;
+    // public void InfestKeyPressed()
+    // {
+    //     if(onInfestKeyPressed != null)
+    //     {
+    //         onInfestKeyPressed();
+    //     }
+    // } 
+
+    private void ChangeControls(GameObject character)
     {
-        
+        currentCharacter.GetComponent<CharacterController2D>().enabled = !currentCharacter.GetComponent<CharacterController2D>().enabled;
+        currentCharacter.GetComponent<PlayerMovement>().enabled = !currentCharacter.GetComponent<PlayerMovement>().enabled;
     }
 
-   public void SayHello()
-   {
-       Debug.Log("Hello");
-   }
+    public void ChangeCharacter(GameObject chosenCharacter)
+    {
+        ChangeControls(currentCharacter);
+        currentCharacter = chosenCharacter;
+        ChangeControls(currentCharacter);
+    }
 }
