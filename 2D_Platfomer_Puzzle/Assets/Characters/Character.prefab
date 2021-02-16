@@ -157,7 +157,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01995644, y: -0.104913116}
+  m_Offset: {x: 0, y: -0.104913116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -183,9 +183,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018057346, y: -0.53}
+  m_Offset: {x: 0, y: -0.57}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 0.42552775
 --- !u!114 &3740343364447640626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ab4558278fd9a49b95ef6186f16ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   characterController: {fileID: 3740343364447640626}
   animator: {fileID: 1061566843}
   runSpeed: 40
@@ -277,11 +276,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de8cc7b9d25064499d6a4ee5fe2a800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousCharacter: {fileID: 0}
   changePoint: {fileID: 2918360440624265032}
-  changeRange: 0.4
+  changeRange: 0.3
   playerLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
 --- !u!1 &2428268190371929241
 GameObject:
   m_ObjectHideFlags: 0

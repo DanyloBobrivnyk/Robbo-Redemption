@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterChanging : MonoBehaviour
 {
-    public PlayerController playerController;
+    public GameObject previousCharacter = null;
     public Transform changePoint;
     public float changeRange = 0.5f;
     public LayerMask playerLayers;
@@ -15,6 +15,10 @@ public class CharacterChanging : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             ChangeCharacter();
+        }
+        else if(Input.GetKeyDown(KeyCode.Q))
+        {
+            QuitCurrentCharacter(this.previousCharacter);
         }
     }
 
@@ -33,9 +37,25 @@ public class CharacterChanging : MonoBehaviour
         else
         {
             chosenCharacter = chosenCharacters[0].gameObject;
-        
-            playerController.ChangeCharacter(chosenCharacter);
+            PlayerController.singleton.ChangeCharacter(chosenCharacter);
         }
+    }
+
+    private void QuitCurrentCharacter(GameObject characterToPlaceInstead)
+    {
+        //Play an animation
+        
+        //Check prev. character
+        if(characterToPlaceInstead != null)
+        {
+            //If he's not null - place it on this position and disable current character
+            PlayerController.singleton.QuitCurrentCharacter(characterToPlaceInstead);
+        }
+        else
+        {
+            Debug.Log("No characters to change");
+        }
+
     }
 
     private void OnDrawGizmosSelected() {
