@@ -5,32 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	public CharacterController2D controller;
-
+	public Animator animator;
 	public float runSpeed = 40f;
-
+	[HideInInspector] public bool jump = false;
+	[HideInInspector] public bool crouch = false;
 	float horizontalMove = 0f;
-	bool jump = false;
-	bool crouch = false;
 	
-	// Update is called once per frame
+	
 	void Update () {
-
+		//Get's controls, horizontalmove = left - -1 * runspeed or right +1 * runspeed
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-	//It should be moved into another script
-		if (Input.GetButtonDown("Jump"))
-		{
-			jump = true;
-		}
-
-		if (Input.GetButtonDown("Crouch"))
-		{
-			crouch = true;
-			Debug.Log("Crouch active");
-		} else if (Input.GetButtonUp("Crouch"))
-		{
-			crouch = false;
-		}
-
+		//Change animator parameter to always positive value
+		animator.SetFloat("Speed", Mathf.Abs(horizontalMove)); 
 	}
 
 	void FixedUpdate ()
