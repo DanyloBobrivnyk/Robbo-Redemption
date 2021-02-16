@@ -24,13 +24,21 @@ public class patrolsword : MonoBehaviour
 
     Transform player;
 
+    public float timeBetweenAttacks;
+    float nextAttackTime;
+
+    public Transform attackPoint;
+    public float attackRange;
+
+    public LayerMask playerLayer;
+
     private void Start()
     {
         Vector2 pointpos = new Vector2(patrolpoints[0].position.x, transform.position.y);
         transform.position = pointpos;
         transform.rotation = patrolpoints[0].rotation;
         waittime = startwaittime;
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
     private void Update()
     { 
@@ -72,7 +80,20 @@ public class patrolsword : MonoBehaviour
             Vector2 pointpos = new Vector2(player.position.x, transform.position.y);
             if (Vector2.Distance(transform.position, player.transform.position) > distancefromplayer)
             {
+                // anim.SetBool("isrunning", true);
                 transform.position = Vector2.MoveTowards(transform.position, pointpos, speed * Time.deltaTime);
+            }
+            else
+            {
+                if (Time.time >= nextAttackTime)
+                {
+                    nextAttackTime = Time.time + timeBetweenAttacks;
+                    anim.SetTrigger("attack");
+                }
+                else if (Time.time <= nextAttackTime)
+                {
+                    // anim.SetBool("isrunning", false);
+                }
             }
         }
     }
@@ -88,11 +109,10 @@ public class patrolsword : MonoBehaviour
                 {
                     player = raycastHit.collider.transform;
                     attack = true;
+                } else
+                {
+                    attack = false;
                 }
-            }
-            else
-            {
-                attack = false;
             }
         }
         else
@@ -105,12 +125,27 @@ public class patrolsword : MonoBehaviour
                 {
                     player = raycastHit.collider.transform;
                     attack = true;
-                }
-           }
-           else
+                }           else
             {
                 attack = false;
             }
+           }
+
         }
     }
+    public void Attack()
+    {
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+        foreach (Collider2D col in enemiesToDamage)
+        {
+                Debug.Log("killed");
+        }
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
 }
