@@ -6,34 +6,50 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController singleton {get; private set;}
-    [SerializeField] private GameObject currentCharacter;
+    public GameObject currentCharacter;
     public int changesAmount = 2;
+
+    public int changesCounter = 0;
     private void Awake() {
         singleton = this;
     }
-    private void ChangeCharacterControls(GameObject character)
+    private void TurnOnCharacterControls(GameObject character)
     {
-        //here must be enabled all the scripts 
-        currentCharacter.GetComponent<CharacterController2D>().enabled = !currentCharacter.GetComponent<CharacterController2D>().enabled;
-        currentCharacter.GetComponent<PlayerMovement>().enabled = !currentCharacter.GetComponent<PlayerMovement>().enabled;
+        //here must be changed all the scripts 
+        character.GetComponent<CharacterChanging>().TurnOnCharacterScripts(); 
+    }
+    private void TurnOffCharacterControls(GameObject character)
+    {
+        //here must be changed all the scripts 
+        character.GetComponent<CharacterChanging>().TurnOffCharacterScripts(); 
     }
 
     public void ChangeCharacter(GameObject chosenCharacter)
     {
-        ChangeCharacterControls(currentCharacter);
-        chosenCharacter.GetComponent<CharacterChanging>().previousCharacter = currentCharacter; 
+        //Turn on controls at second char
+        TurnOnCharacterControls(chosenCharacter);
+        //Turn off current character
         currentCharacter.SetActive(false);
+        //Replace current by second
+        chosenCharacter.GetComponent<CharacterChanging>().previousCharacter = currentCharacter; 
         currentCharacter = chosenCharacter;
-        ChangeCharacterControls(currentCharacter);
+        //Add 1 to changes
+        changesCounter++;
     }
 
     public void QuitCurrentCharacter(GameObject characterToPlaceInstead)
     {
-        ChangeCharacterControls(currentCharacter);
+        //Turn off current character controls
+        TurnOffCharacterControls(currentCharacter);
+        //Place previous char nearby
         characterToPlaceInstead.GetComponent<Transform>().position = currentCharacter.GetComponent<Transform>().position;
 
+        //Controller replacement
         currentCharacter = characterToPlaceInstead;
+        //Turn On current char
         currentCharacter.SetActive(true);
-        ChangeCharacterControls(currentCharacter);
+        TurnOnCharacterControls(characterToPlaceInstead);
+        //Add -1
+        changesCounter--;
     }
 }
