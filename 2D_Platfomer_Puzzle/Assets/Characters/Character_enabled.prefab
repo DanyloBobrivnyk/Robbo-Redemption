@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
-  m_Color: {r: 0.21812162, g: 0.21764861, b: 0.6886792, a: 1}
+  m_Color: {r: 0.68768644, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01995644, y: -0.104913116}
+  m_Offset: {x: 0, y: -0.104913116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -183,9 +183,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018057346, y: -0.53}
+  m_Offset: {x: 0, y: -0.57}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 0.42552775
 --- !u!114 &3740343364447640626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058acfdcc29742947a58dc8fbfae29d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 300
+  m_JumpForce: 700
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 3740343364447640626}
   animator: {fileID: 1061566843}
-  runSpeed: 20
+  runSpeed: 40
   jump: 0
   crouch: 0
 --- !u!114 &3376740025750066382
@@ -271,12 +271,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436974240470510177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4de8cc7b9d25064499d6a4ee5fe2a800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   previousCharacter: {fileID: 0}
+  scriptsArray: []
   changePoint: {fileID: 2918360440624265032}
   changeRange: 0.3
   playerLayers:
