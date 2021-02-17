@@ -6,15 +6,20 @@ public class Weapon : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-    public float shootPause = 2.0f;
+    public float shootPause;
+    //public Animator animator;
 
     private void Start() {
-        InvokeRepeating("Shoot", shootPause, 2.0f);
+        InvokeRepeating("Shoot", shootPause, shootPause);
     }
     
     public void Shoot()
     {
         //Shooting logic
+        //animator.SetBool("Shooted", true);
+        
         Instantiate(bulletPrefab, firePoint.transform.position, firePoint.rotation);
+
+        //animator.SetBool("Shooted", false);
     }
 }
