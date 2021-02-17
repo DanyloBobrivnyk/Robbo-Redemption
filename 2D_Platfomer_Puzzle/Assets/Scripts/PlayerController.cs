@@ -52,4 +52,9 @@ public class PlayerController : MonoBehaviour
         //Add -1
         changesCounter--;
     }
+
+    public void TakeDamage()
+    {
+        Debug.Log("Damage taken");
+    }
 }

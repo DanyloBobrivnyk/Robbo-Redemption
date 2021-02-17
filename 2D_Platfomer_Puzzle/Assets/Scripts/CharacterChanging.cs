@@ -9,7 +9,7 @@ public class CharacterChanging : MonoBehaviour
     public GameObject previousCharacter = null;
     [SerializeField] private List<Component> scriptsArray;
     public Transform changePoint;
-    public float changeRange = 0.5f;
+    public float changeRange = 0.6f;
     public LayerMask playerLayers;
     private GameObject chosenCharacter;
 
