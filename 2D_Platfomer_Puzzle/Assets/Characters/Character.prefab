@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3376740025750066382}
   - component: {fileID: 1061566843}
   - component: {fileID: 2976216340256962009}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ MonoBehaviour:
   changeRange: 0.3
   playerLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
 --- !u!1 &2428268190371929241
 GameObject:
   m_ObjectHideFlags: 0

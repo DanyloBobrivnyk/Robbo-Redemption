@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
             //Make damage to active char
             PlayerController.singleton.TakeDamage();
             
+            //Stop bullet and start destroying animation
             this.GetComponent<CircleCollider2D>().enabled = false;
             rb.velocity = Vector3.zero;
             animator.enabled = true;
