@@ -79,9 +79,11 @@ public class PlayerController : MonoBehaviour
 
     public int DetermineDirection(GameObject obj)
     {
-        var rotDirection = obj.GetComponent<Transform>().rotation.eulerAngles.y;
+        float rotDirection = obj.GetComponent<Transform>().localRotation.y;
+        Debug.Log("Y:" + rotDirection);
+
         
-        var dir = rotDirection == 0 ? 1 : -1;
+        var dir = rotDirection == -1 ? -1 : 1;
         //if 0 return -1 (left) if 180 means (right) and return 1
         
         return dir;
