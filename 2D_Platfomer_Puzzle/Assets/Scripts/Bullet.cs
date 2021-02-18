@@ -28,9 +28,7 @@ public class Bullet : MonoBehaviour
             PlayerController.singleton.TakeDamage();
             
             //Stop bullet and start destroying animation
-            this.GetComponent<CircleCollider2D>().enabled = false;
-            rb.velocity = Vector3.zero;
-            animator.enabled = true;
+            StopBullet();
         }
         else if(enemy != null)
         {
@@ -38,14 +36,19 @@ public class Bullet : MonoBehaviour
         }
         else 
         {
-            this.GetComponent<CircleCollider2D>().enabled = false;
-            rb.velocity = Vector3.zero;
-            animator.enabled = true;
+            StopBullet();
         }
     }
 
-    //To avoid friendly fire may be implemented determine gun owner func  
+    private void StopBullet()
+    {
+        this.GetComponent<CircleCollider2D>().enabled = false;
+        rb.velocity = Vector3.zero;
+        animator.enabled = true;
+    } 
 
+    //To avoid friendly fire may be implemented determine gun owner func  
+    
     private void TurnOffBulletEffects()
     {
         //Destroy after animation played
