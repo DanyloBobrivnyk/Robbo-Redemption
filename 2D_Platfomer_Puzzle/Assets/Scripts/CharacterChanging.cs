@@ -8,7 +8,7 @@ public class CharacterChanging : MonoBehaviour
     //TODO Ability references
     public GameObject previousCharacter = null;
     public Transform changePoint;
-    public float changeRange = 0.3f;
+    public float changeRange;
     public LayerMask playerLayers;
     private GameObject chosenCharacter;
 
@@ -18,7 +18,7 @@ public class CharacterChanging : MonoBehaviour
         {
             ChangeCharacter();
         }
-        else if(Input.GetKeyDown(KeyCode.Q))
+        else if(Input.GetKeyDown(KeyCode.Q) && previousCharacter != null)
         {
             QuitCurrentCharacter(previousCharacter);
         }
@@ -38,10 +38,22 @@ public class CharacterChanging : MonoBehaviour
         {
             Debug.Log("No characters in radius");
         }
-        else
+        else 
         {
-            chosenCharacter = chosenCharacters[0].gameObject;
-            PlayerController.singleton.ChangeCharacter(chosenCharacter);
+            for(int i = 0; i < chosenCharacters.Length; i++)
+            {
+                if(chosenCharacters[i].gameObject != PlayerController.singleton.currentCharacter)
+                {
+                    chosenCharacter = chosenCharacters[i].gameObject;
+                    PlayerController.singleton.ChangeCharacter(chosenCharacter);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            
         }
     }
 

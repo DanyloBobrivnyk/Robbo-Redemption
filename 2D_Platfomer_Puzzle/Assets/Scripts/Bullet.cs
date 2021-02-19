@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
         Enemy enemy = other.GetComponent<Enemy>();
 
-        if (character != null && character.enabled == false)
+        if (character != null && character.enabled == false || layerName == "Water")
         {
             //Skip enabled characters
         }

@@ -6,12 +6,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float pushForce = 1000;
+    public List<GameObject> characterList;
     public static PlayerController singleton {get; private set;}
     public GameObject currentCharacter;
     public int changesAmount = 2;
     public int changesCounter = 0;
     private void Awake() {
         singleton = this;
+    }
+    private void Start() {
+        AddCharacterToList(currentCharacter);
     }
     public void TurnOnCharacterControls(GameObject character)
     {
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
         chosenCharacter.GetComponent<CharacterChanging>().previousCharacter = currentCharacter; 
         currentCharacter = chosenCharacter;
         //Add 1 to changes
+        AddCharacterToList(chosenCharacter);
         changesCounter++;
     }
 
@@ -49,10 +54,13 @@ public class PlayerController : MonoBehaviour
         //Place new char nearby
         PushOutOfBody(currentCharacter, characterToPlaceInstead);
 
+        //Remove from list
+        RemoveCharacterFromList(currentCharacter);
+
         //Controller replacement
         currentCharacter = characterToPlaceInstead;
         
-        //Add -1
+        //Remove 1
         changesCounter--;
     }
     public void TakeDamage()
@@ -91,4 +99,28 @@ public class PlayerController : MonoBehaviour
     {
         objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
     } 
+
+    public void AddCharacterToList(GameObject obj)
+    {
+        if(obj != null)
+        {
+            characterList.Add(obj);
+        }
+        else
+        {
+            Debug.Log("Adding error, tried to add null");
+        }
+    }
+    
+    public void RemoveCharacterFromList(GameObject obj)
+    {
+        if(obj != null)
+        {
+            characterList.Remove(obj);
+        }
+        else
+        {
+            Debug.Log("Adding error, tried to add null");
+        }
+    }
 }
