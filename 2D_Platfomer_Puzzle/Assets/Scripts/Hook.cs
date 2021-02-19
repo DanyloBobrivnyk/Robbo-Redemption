@@ -57,6 +57,11 @@ public class Hook : MonoBehaviour
             
             StopHook();
         }
+        else
+        {
+            
+            Destroy(this.gameObject);
+        }
     }
     
     private void HookObject()
