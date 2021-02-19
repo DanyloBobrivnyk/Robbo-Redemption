@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         //Add -1
         changesCounter--;
     }
-
     public void TakeDamage()
     {
         Debug.Log("Damage taken");
@@ -74,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         
         objToPush.GetComponent<Transform>().position = pushFrom.GetComponent<Transform>().position;
-        objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(opositeDir * pushForce, 100));
+        PushObject(objToPush, opositeDir);
     }
 
     public int DetermineDirection(GameObject obj)
@@ -88,5 +87,8 @@ public class PlayerController : MonoBehaviour
         
         return dir;
     }
-
+    public void PushObject(GameObject objToPush, int dir)
+    {
+        objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
+    } 
 }

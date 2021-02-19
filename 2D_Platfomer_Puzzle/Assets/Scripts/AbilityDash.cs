@@ -8,7 +8,7 @@ public class AbilityDash : MonoBehaviour
     private float dashTime;
     private int direction;
 //It should be changed !!!
-    private int immortalLayer = 12;
+    private int immortalLayer = 4;
     private int playerLayer = 10;
     public float startDashTime;
     public float dashPower;

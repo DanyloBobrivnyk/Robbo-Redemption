@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         {
             //Skip enabled characters
         }
-        else if(character != null && character.enabled != false && layerName != "Immortal")
+        else if(character != null && character.enabled != false && layerName != "Water")
         {
             //Make damage to active char
             PlayerController.singleton.TakeDamage();
