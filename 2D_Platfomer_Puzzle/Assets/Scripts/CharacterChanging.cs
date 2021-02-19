@@ -7,19 +7,11 @@ public class CharacterChanging : MonoBehaviour
 {
     //TODO Ability references
     public GameObject previousCharacter = null;
-    [SerializeField] private List<Component> scriptsArray;
     public Transform changePoint;
-    public float changeRange = 0.5f;
+    public float changeRange = 0.3f;
     public LayerMask playerLayers;
     private GameObject chosenCharacter;
 
-
-    private void Start() {
-        //Add the following scripts into List
-        scriptsArray.Add(this.GetComponent<CharacterController2D>());
-        scriptsArray.Add(this.GetComponent<PlayerMovement>());
-        scriptsArray.Add(this.GetComponent<CharacterChanging>());
-    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && PlayerController.singleton.changesCounter < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
@@ -79,32 +71,44 @@ public class CharacterChanging : MonoBehaviour
 
     public void TurnOnCharacterScripts()
     {
-        foreach (MonoBehaviour component in scriptsArray)
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
         {
-            if(component == null)
+            string scriptName = script.GetType().ToString();
+            if(scriptName != "CharacterChanging")
             {
-                Debug.Log("Script turning on error");
+                script.enabled = true;
             }
-            else
-            {
-                component.enabled = true;   
-            }
+            
         }
     }
 
     public void TurnOffCharacterScripts()
     {
         //Change those scripts state
-        foreach (MonoBehaviour component in scriptsArray)
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
         {
-            if(component == null)
+            string scriptName = script.GetType().ToString();
+            if(scriptName != "CharacterChanging")
             {
-                Debug.Log("Script turning on error");
+                script.enabled = false;
             }
-            else
-            {
-                component.enabled = false;   
-            }
+            
+        }
+    }
+
+    private void GetScriptsInObject()
+    {
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            //Do whatever you want with script component
+            
         }
     }
 }
