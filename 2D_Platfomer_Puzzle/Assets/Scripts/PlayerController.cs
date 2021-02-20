@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //private int pushForce = 1000;
+    private int pushForce = 1000;
     public static PlayerController singleton {get; private set;}
     public EventHandler OnCharacterChanged; 
     public List<Sprite> characterList;
@@ -23,7 +23,10 @@ public class PlayerController : MonoBehaviour
     }
     public void RemoveOneChangesCounter()
     {
-        changesCounter--;
+        if(changesCounter>0)
+        {
+            changesCounter--;
+        }
     }
 
     private void Awake() {
@@ -101,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
         
         objToPush.GetComponent<Transform>().position = pushFrom.GetComponent<Transform>().position;
-        //PushObject(objToPush, opositeDir);
+        PushObject(objToPush, opositeDir);
     }
 
     public int DetermineDirection(GameObject obj)
@@ -115,10 +118,10 @@ public class PlayerController : MonoBehaviour
         
         return dir;
     }
-    // public void PushObject(GameObject objToPush, int dir)
-    // {
-    //     objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
-    // } 
+    public void PushObject(GameObject objToPush, int dir)
+    {
+        objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
+    } 
 
     public void AddCharacterIconToList(GameObject obj)
     {

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737977237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.109, y: 0.773, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0.773, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13679957, y: 0.10955262}
+  m_Offset: {x: -0.15, y: 0.10955262}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.37958986, y: 0.48640266}
@@ -171,7 +171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6741149, y: 1.4288473}
+  m_Size: {x: 0.7174333, y: 1.4288473}
   m_EdgeRadius: 0
 --- !u!58 &2127689119779344170
 CircleCollider2D:
@@ -186,9 +186,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13913763, y: -0.6}
+  m_Offset: {x: -0.15331924, y: -0.6}
   serializedVersion: 2
-  m_Radius: 0.33874977
+  m_Radius: 0.3529315
 --- !u!114 &3740343364447640626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7784b48ecb76a14a97cad13b44f52a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 2918360440624265032}
+  firePoint: {fileID: 335300210759037826}
   hookPrefab: {fileID: 7257568977300258637, guid: 66034032b546c204a9a3fc4bcdd652f1, type: 3}
 --- !u!1 &2428268190371929241
 GameObject:
@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918360440624265032}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: InfestRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
