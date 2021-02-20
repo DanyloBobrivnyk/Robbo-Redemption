@@ -51,7 +51,10 @@ public class Hook : MonoBehaviour
         if(layerName == "Object" || layerName == "Enemy" || layerName == "Player")
         {
             objectToGrap = other.gameObject;
-            playerController.TurnOffCharacterControls(playerController.currentCharacter);
+            if(objectToGrap.GetComponent<CharacterController2D>())
+            {
+                PlayerController.singleton.currentCharacter.GetComponent<CharacterController2D>().TurnOffCharacterScripts();
+            }
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100));
             gotIt = true;
             
@@ -71,7 +74,8 @@ public class Hook : MonoBehaviour
         rb = objectToGrap.GetComponent<Rigidbody2D>();
         rb.transform.position = firePoint.position;
         
-        playerController.TurnOnCharacterControls(playerController.currentCharacter);
+        PlayerController.singleton.currentCharacter.GetComponent<CharacterController2D>().TurnOnCharacterScripts();
+
         
         Destroy(this.gameObject);
     }

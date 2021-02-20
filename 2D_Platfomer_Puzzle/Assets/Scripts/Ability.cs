@@ -6,8 +6,34 @@ using UnityEngine.UI;
 public class Ability : ScriptableObject
 {
     public string abilityName;
-    public string description;
-    public Sprite abilityIcon;
+    public string abilityDescription;
 
-    public MonoBehaviour abilityScript;
+    public string passiveAbilityName;
+    public string passiveAbilityDescription;
+    public Sprite abilityIcon;
+    public Sprite passiveAbilityIcon;
+
+    public List<string> GetAbilityText()
+    {
+        var list = new List<string>();
+        list.Add(abilityName);
+        list.Add(abilityDescription);
+        return list;
+    }
+    public List<string> GetPassiveAbilityText()
+    {
+        var list = new List<string>();
+        list.Add(passiveAbilityName);
+        list.Add(passiveAbilityDescription);
+        return list;
+    }
+
+    public Sprite GetAbilitySprite()
+    {
+        return abilityIcon;
+    }
+    public Sprite GetPassiveAbilitySprite()
+    {
+        return passiveAbilityIcon;
+    }
 }

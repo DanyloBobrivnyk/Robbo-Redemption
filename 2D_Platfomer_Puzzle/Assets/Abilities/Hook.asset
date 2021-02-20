@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd6f2e0919b2d840bf81bdd6280b6e7, type: 3}
+  m_Name: Hook
+  m_EditorClassIdentifier: 
+  abilityName: Grappling hook
+  abilityDescription: HOOK THEM [F]
+  passiveAbilityName: Powerful engine
+  passiveAbilityDescription: Strong, heavy
+  abilityIcon: {fileID: 21300000, guid: 6779a9f6ab45eba448b46c39ae369891, type: 3}
+  passiveAbilityIcon: {fileID: 21300000, guid: ccea94182a7d3bb498037618a9fc8059, type: 3}

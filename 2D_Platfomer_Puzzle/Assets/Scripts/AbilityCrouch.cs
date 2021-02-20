@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AbilityCrouch : MonoBehaviour
 {
-    public PlayerMovement movement;
+    private PlayerMovement movement;
     public Animator animator;
 
     private void Start() {
+        movement = this.gameObject.GetComponent<PlayerMovement>();
         movement.runSpeed += 20;
     }
     private void Update() {

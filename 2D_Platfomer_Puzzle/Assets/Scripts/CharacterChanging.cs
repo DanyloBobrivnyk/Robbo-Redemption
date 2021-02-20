@@ -20,7 +20,7 @@ public class CharacterChanging : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Q) && previousCharacter != PlayerController.singleton.currentCharacter && previousCharacter != null )
         {
-            Debug.Log(previousCharacter);
+            //Debug.Log(previousCharacter);
             QuitCurrentCharacter(this.previousCharacter);
         }
     }
@@ -33,7 +33,6 @@ public class CharacterChanging : MonoBehaviour
         Collider2D[] chosenCharacters = Physics2D.OverlapCircleAll(changePoint.position, changeRange, playerLayers);
 
         //Change the character
-        //PlayerController.singleton.ChangeCharacter(chosenCharacter.gameObject);
 
         if(chosenCharacters.Length == 0)
         {
@@ -46,7 +45,17 @@ public class CharacterChanging : MonoBehaviour
                 if(chosenCharacters[i].gameObject != PlayerController.singleton.currentCharacter)
                 {
                     chosenCharacter = chosenCharacters[i].gameObject;
-                    PlayerController.singleton.ChangeCharacter(chosenCharacter);
+                     //Turn on controls at second char
+                    chosenCharacter.gameObject.GetComponent<CharacterController2D>().TurnOnCharacterScripts();
+                    //Turn off current
+                    this.gameObject.SetActive(false);
+                    //Replace current char by second
+                    chosenCharacter.GetComponent<CharacterChanging>().previousCharacter = this.gameObject;  
+                    PlayerController.singleton.currentCharacter = chosenCharacter;
+                    //Add all the info into controller
+                    PlayerController.singleton.AddCharacterIconToList(chosenCharacter);
+                    PlayerController.singleton.AddOneChangesCounter();
+                    PlayerController.singleton.InvokeOnCharacterChanged();
                     break;
                 }
                 else
@@ -65,8 +74,23 @@ public class CharacterChanging : MonoBehaviour
         //Check prev. character
         if(characterToPlaceInstead != null)
         {
-            //If he's not null - place it on this position and disable current character
-            PlayerController.singleton.QuitCurrentCharacter(characterToPlaceInstead);
+            Debug.Log("Quit func");
+            //Turn off current movement
+            this.gameObject.GetComponent<CharacterController2D>().TurnOffCharacterScripts();
+
+            //Turn on before placing
+            characterToPlaceInstead.gameObject.SetActive(true);
+            characterToPlaceInstead.gameObject.GetComponent<CharacterController2D>().TurnOnCharacterScripts();
+            //Place the new char nearby
+            PlaceNearby(this.gameObject, characterToPlaceInstead);
+            
+            //Set as current
+            previousCharacter = null;
+            PlayerController.singleton.currentCharacter = characterToPlaceInstead;
+            //
+            PlayerController.singleton.RemoveCharacterIconFromList(this.gameObject);
+            PlayerController.singleton.MinusOneChangesCounter();
+            PlayerController.singleton.InvokeOnCharacterChanged();
         }
         else
         {
@@ -81,47 +105,16 @@ public class CharacterChanging : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(changePoint.position, changeRange);    
     }
-
-    public void TurnOnCharacterScripts()
+    private void PlaceNearby(GameObject onjToBeNear, GameObject objToPlace)
     {
-        var scripts = gameObject.GetComponents<MonoBehaviour>();
-    
-        foreach (MonoBehaviour script in scripts)
-        {
-            string scriptName = script.GetType().ToString();
-            if(scriptName != "CharacterChanging")
-            {
-                script.enabled = true;
-            }
-            
-        }
-    }
+        Debug.Log("Place fnc");
+        var sourceObjDir = PlayerController.singleton.DetermineDirection(onjToBeNear);
+        var childObjDir = PlayerController.singleton.DetermineDirection(objToPlace);
+        var opositeDir = sourceObjDir * -1;
+        var rotationValue = opositeDir*180; 
 
-    public void TurnOffCharacterScripts()
-    {
-        //Change those scripts state
-        var scripts = gameObject.GetComponents<MonoBehaviour>();
-    
-        foreach (MonoBehaviour script in scripts)
-        {
-            string scriptName = script.GetType().ToString();
-            if(scriptName != "CharacterChanging")
-            {
-                script.enabled = false;
-            }
-            
-        }
-    }
-
-    private void GetScriptsInObject()
-    {
-        var scripts = gameObject.GetComponents<MonoBehaviour>();
-    
-        foreach (MonoBehaviour script in scripts)
-        {
-            string scriptName = script.GetType().ToString();
-            //Do whatever you want with script component
-            
-        }
+        childObjDir = sourceObjDir;
+        objToPlace.GetComponent<Transform>().position = onjToBeNear.GetComponent<Transform>().position;
+        objToPlace.GetComponent<Rigidbody2D>().AddForce(new Vector2(opositeDir*1000, 300));
     }
 }

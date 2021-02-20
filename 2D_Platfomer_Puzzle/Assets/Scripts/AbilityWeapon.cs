@@ -9,14 +9,17 @@ public class AbilityWeapon : MonoBehaviour
     public float shootPause;
     //public Animator animator;
 
-    private void Update() {
-        if(Input.GetButtonDown("AbilityF"))
-        {
-            
-            Shoot();
-        }
+
+    private void Start() {
+        this.gameObject.GetComponent<AbilityController>().OnAbilityUsed += AbilityWeapon_OnAbilityUsed;
+        
     }
     
+    private void AbilityWeapon_OnAbilityUsed(object sender, System.EventArgs e)
+    {
+        Shoot();
+    }
+
     public void Shoot()
     {
         //Shooting logic

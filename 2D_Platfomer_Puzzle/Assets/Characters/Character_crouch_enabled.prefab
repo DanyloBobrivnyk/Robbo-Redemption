@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 6366528797655937625}
   - component: {fileID: 1061566843}
   - component: {fileID: 2976216340256962009}
+  - component: {fileID: 7181838685674122742}
   m_Layer: 10
   m_Name: Character_crouch_enabled
   m_TagString: Untagged
@@ -243,7 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce373207d4559d48a2537b859f26193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 473812836}
   animator: {fileID: 1061566843}
 --- !u!95 &1061566843
 Animator:
@@ -277,12 +277,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previousCharacter: {fileID: 0}
-  scriptsArray: []
   changePoint: {fileID: 2918360440624265032}
   changeRange: 0.3
   playerLayers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &7181838685674122742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436974240470510177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39dbebc4ca13994da5a813bf63f0cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 4e222b8678d8ccf4da4235f1415aa8e0, type: 2}
 --- !u!1 &2428268190371929241
 GameObject:
   m_ObjectHideFlags: 0

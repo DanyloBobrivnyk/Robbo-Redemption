@@ -136,6 +136,46 @@ public class CharacterController2D : MonoBehaviour
 		// Multiply the player's x local scale by -1.
 		transform.Rotate(0f, 180f, 0f);
 	}
+	public void TurnOnCharacterScripts()
+    {
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            if(scriptName != "CharacterChanging")
+            {
+                script.enabled = true;
+            }
+            
+        }
+    }
 
+    public void TurnOffCharacterScripts()
+    {
+        //Change those scripts state
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            if(scriptName != "CharacterChanging")
+            {
+                script.enabled = false;
+            }
+            
+        }
+    }
 
+    private void GetScriptsInObject()
+    {
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            //Do whatever you want with script component
+            
+        }
+    }
 }

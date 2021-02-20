@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class AbilityJump : MonoBehaviour
 {
-    public PlayerMovement movement;
+    private PlayerMovement movement;
     public Animator animator;
+    private void Start() {
+        movement = this.gameObject.GetComponent<PlayerMovement>();
+    }
     private void Update() {
         if (Input.GetButtonDown("Jump"))
 		{
