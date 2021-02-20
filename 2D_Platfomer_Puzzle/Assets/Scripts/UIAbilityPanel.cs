@@ -19,7 +19,7 @@ public class UIAbilityPanel : MonoBehaviour
         currentCharacter = PlayerController.singleton.currentCharacter;
         activeAbilityPanelTemplate = containersParent.Find("AbilityContainer");
         passiveAbilityPanelTemplate = containersParent.Find("PassiveAbilityContainer");
-
+        UpdateUI();
     }
 
     private void UIAbilityPanel_OnCharacterChanged(object sender, System.EventArgs e)

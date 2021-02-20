@@ -117,4 +117,5 @@ public class CharacterChanging : MonoBehaviour
         objToPlace.GetComponent<Transform>().position = onjToBeNear.GetComponent<Transform>().position;
         objToPlace.GetComponent<Rigidbody2D>().AddForce(new Vector2(opositeDir*1000, 300));
     }
+    
 }

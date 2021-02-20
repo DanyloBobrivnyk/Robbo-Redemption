@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd6f2e0919b2d840bf81bdd6280b6e7, type: 3}
   m_Name: Hook
   m_EditorClassIdentifier: 
+  characterIcon: {fileID: 21300000, guid: 6779a9f6ab45eba448b46c39ae369891, type: 3}
   abilityName: Grappling hook
   abilityDescription: HOOK THEM [F]
   passiveAbilityName: Powerful engine
-  passiveAbilityDescription: Strong, heavy
-  abilityIcon: {fileID: 21300000, guid: 6779a9f6ab45eba448b46c39ae369891, type: 3}
+  passiveAbilityDescription: Your engine allows you to push hard objects. Ex. Boxes
+  abilityIcon: {fileID: 21300000, guid: 99eb127af8f0da54594ea214449d9dfb, type: 3}
   passiveAbilityIcon: {fileID: 21300000, guid: ccea94182a7d3bb498037618a9fc8059, type: 3}

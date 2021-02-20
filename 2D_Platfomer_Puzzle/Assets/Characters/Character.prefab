@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737977237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0.773, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0.639, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: 0.10955262}
+  m_Offset: {x: -0.15, y: 0.15614295}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.37958986, y: 0.48640266}
@@ -171,7 +171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7174333, y: 1.4288473}
+  m_Size: {x: 0.7174333, y: 1.522028}
   m_EdgeRadius: 0
 --- !u!58 &2127689119779344170
 CircleCollider2D:
@@ -213,7 +213,19 @@ MonoBehaviour:
   m_CrouchDisableCollider: {fileID: 2984553008103828554}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3376740025750066382}
+        m_TargetAssemblyTypeName: AbilityJump, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -246,7 +258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2264052847be54a841be87a71eab77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 473812836}
   animator: {fileID: 1061566843}
 --- !u!95 &1061566843
 Animator:
@@ -306,11 +317,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 436974240470510177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7784b48ecb76a14a97cad13b44f52a0, type: 3}
+  m_Script: {fileID: 11500000, guid: f39dbebc4ca13994da5a813bf63f0cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 335300210759037826}
-  hookPrefab: {fileID: 7257568977300258637, guid: 66034032b546c204a9a3fc4bcdd652f1, type: 3}
+  ability: {fileID: 11400000, guid: b5d8615ce1b679a4b86173da69bcbb71, type: 2}
 --- !u!1 &2428268190371929241
 GameObject:
   m_ObjectHideFlags: 0

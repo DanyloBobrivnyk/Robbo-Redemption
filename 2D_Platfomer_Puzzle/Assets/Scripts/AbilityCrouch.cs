@@ -8,6 +8,7 @@ public class AbilityCrouch : MonoBehaviour
     public Animator animator;
 
     private void Start() {
+        PlayerController.singleton.OnCharacterChanged += AbilityCrouch_OnCharacterChanged;
         movement = this.gameObject.GetComponent<PlayerMovement>();
         movement.runSpeed += 20;
     }
@@ -23,8 +24,19 @@ public class AbilityCrouch : MonoBehaviour
 		}
     }
 
+    private void AbilityCrouch_OnCharacterChanged(object sender, System.EventArgs e)
+    {
+        MakeEnabled();
+    }
+    
     public void OnCrouching(bool IsCrouching)
     {
         //animator.SetBool("IsCrouching", IsCrouching);
+    }
+
+    public void MakeEnabled()
+    {
+        if(PlayerController.singleton.currentCharacter == this.gameObject)
+        animator.SetBool("Enabled", true);
     }
 }

@@ -7,6 +7,7 @@ public class AbilityJump : MonoBehaviour
     private PlayerMovement movement;
     public Animator animator;
     private void Start() {
+        //PlayerController.singleton.OnCharacterChanged += AbilityJump_OnCharacterChanged;
         movement = this.gameObject.GetComponent<PlayerMovement>();
     }
     private void Update() {
@@ -19,6 +20,7 @@ public class AbilityJump : MonoBehaviour
 
     public void OnLanding()
     {
+        Debug.Log("Landed");
         animator.SetBool("IsJumping", false);
     }
 }

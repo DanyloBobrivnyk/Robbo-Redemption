@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd6f2e0919b2d840bf81bdd6280b6e7, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
+  characterIcon: {fileID: -5162411571413771110, guid: 8340898a69ffe8e49bc1eb9a1d0ab9f2, type: 3}
   abilityName: Jump pistons
   abilityDescription: Reinforced steel pistons gives you abillity to jump. Use it
     ! [SPACE]

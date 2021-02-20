@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Abilities/Character abilities", fileName = "New Character Ability")]
 public class Ability : ScriptableObject
 {
+    public Sprite characterIcon;
     public string abilityName;
     public string abilityDescription;
 

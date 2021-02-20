@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         if(obj != null)
         {
-            characterList.Add(obj.GetComponent<SpriteRenderer>().sprite);
+            characterList.Add(obj.GetComponent<AbilityController>().ability.characterIcon);
         }
         else
         {
@@ -64,7 +64,19 @@ public class PlayerController : MonoBehaviour
     {
         if(obj != null)
         {
-            characterList.Remove(obj.GetComponent<SpriteRenderer>().sprite);
+            foreach (var item in characterList)
+            {
+                if(item == obj.GetComponent<AbilityController>().ability.characterIcon)
+                {
+                    characterList.Remove(item);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            
         }
         else
         {
