@@ -7,35 +7,32 @@ public class UICharacterPanel : MonoBehaviour
     private int containerAmount;
     private List<Sprite> iconsToAdd;
     public Transform containersParent;
+    private Transform containerTemplate;
     UICharacterSlot[] slots;
 
     void Start()
     {
-
+        UpdateUIBackgrounds();
     }
     private void Awake() {
         PlayerController.singleton.OnCharacterChanged += UICharacterPanel_OnCharacterChanged;
-        containerAmount = PlayerController.singleton.GetChangesCounter();
+        containerAmount = PlayerController.singleton.changesAmount;
         containerAmount++;
     }
     private void UICharacterPanel_OnCharacterChanged(object sender, System.EventArgs e)
     {
-        Debug.Log("Called");
-        UpdateUIBackgrounds();
         UpdateUI();
     }
 
     public void UpdateUI()
     {
+        iconsToAdd = PlayerController.singleton.characterList;
         //Instantiate new icons
-            foreach (GameObject character in PlayerController.singleton.characterList)
-            {
-                iconsToAdd.Add(character.GetComponent<SpriteRenderer>().sprite);
-            }
+
             slots = containersParent.GetComponentsInChildren<UICharacterSlot>();
-            for (int i = 0; i < slots.Length; i++)
+            for (int i = 0; i < iconsToAdd.Count; i++)
             {
-                if(i<containerAmount)
+                if(iconsToAdd[i] != null)
                 {
                     slots[i].AddIcon(iconsToAdd[i]);
                 }
@@ -44,15 +41,32 @@ public class UICharacterPanel : MonoBehaviour
                     slots[i].ClearSlot();
                 }
             }
+            for(int k = iconsToAdd.Count; k < slots.Length; k++)
+            {
+                slots[k].ClearSlot();
+            }
     }
 
     public void UpdateUIBackgrounds()
     {
+        containerTemplate = containersParent.transform.Find("CharacterContainer");
+        containerTemplate.gameObject.SetActive(false);
+        //Create containers to fill
+        for (int i = 0; i < containerAmount; i++)
+        {
+            Transform characterTransform = Instantiate(containerTemplate, containersParent);
+            containerTemplate.gameObject.SetActive(true);
+            
+            //Image characterImage = characterTransform.Find("CharacterImage").GetComponent<Image>();
+            //characterImage.gameObject.SetActive(true);
+        }
+        //Activate containers backgrounds
         slots = containersParent.GetComponentsInChildren<UICharacterSlot>();
         for(int i = 0; i<containerAmount;i++)
         {
-            Debug.Log("Slot" + i +"Active");
             slots[i].AddBackground();
+            UpdateUI();
         }
+
     } 
 }

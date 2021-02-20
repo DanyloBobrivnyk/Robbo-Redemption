@@ -18,9 +18,10 @@ public class CharacterChanging : MonoBehaviour
         {
             ChangeCharacter();
         }
-        else if(Input.GetKeyDown(KeyCode.Q) && previousCharacter != null)
+        else if(Input.GetKeyDown(KeyCode.Q) && previousCharacter != PlayerController.singleton.currentCharacter && previousCharacter != null )
         {
-            QuitCurrentCharacter(previousCharacter);
+            Debug.Log(previousCharacter);
+            QuitCurrentCharacter(this.previousCharacter);
         }
     }
 

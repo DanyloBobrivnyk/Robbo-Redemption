@@ -54,7 +54,7 @@ public class AbilitySwap : MonoBehaviour
                 chosenCharPrev.previousCharacter = currentCharPrev.previousCharacter;
                 currentCharPrev.previousCharacter = chosenCharacter;
             }
-            PlayerController.singleton.AddCharacterToList(chosenCharacter);
+            PlayerController.singleton.AddCharacterIconToList(chosenCharacter);
             chosenCharacter.SetActive(false);
             PlayerController.singleton.AddOneChangesCounter();
         }

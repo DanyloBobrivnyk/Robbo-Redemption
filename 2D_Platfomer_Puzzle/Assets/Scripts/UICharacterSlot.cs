@@ -5,21 +5,23 @@ public class UICharacterSlot : MonoBehaviour
 {
     public Sprite sprite;
     public Image icon;
-    public GameObject background;
+    public Sprite defaultIcon;
+    public GameObject backgroundObject;
 
     public void AddBackground()
     {
-        background.gameObject.SetActive(true);
+        backgroundObject.gameObject.SetActive(true);
     }
     public void AddIcon(Sprite sprite)
     {
         icon.sprite = sprite;
-        icon.enabled = true;
+        // icon.enabled = true;
     }
 
     public void ClearSlot()
     {
-        icon.sprite = null;
-        icon.enabled = false;
+        //icon.sprite = null;
+        icon.sprite = defaultIcon;
+        // icon.enabled = false;
     }
 }

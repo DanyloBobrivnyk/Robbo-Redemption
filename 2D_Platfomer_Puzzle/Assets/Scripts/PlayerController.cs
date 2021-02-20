@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //private int pushForce = 1000;
     public static PlayerController singleton {get; private set;}
     public EventHandler OnCharacterChanged; 
-    public List<GameObject> characterList;
+    public List<Sprite> characterList;
     public GameObject currentCharacter;
     public int changesAmount = 2;
     [SerializeField] private int changesCounter = 0;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
         singleton = this;
     }
     private void Start() {
-        AddCharacterToList(currentCharacter);
+        AddCharacterIconToList(currentCharacter);
         OnCharacterChanged?.Invoke(this, EventArgs.Empty);
     }
 
@@ -55,9 +56,9 @@ public class PlayerController : MonoBehaviour
         chosenCharacter.GetComponent<CharacterChanging>().previousCharacter = currentCharacter; 
         currentCharacter = chosenCharacter;
         //Add 1 to changes
-        AddCharacterToList(chosenCharacter);
-        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
+        AddCharacterIconToList(chosenCharacter);
         this.changesCounter++;
+        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void QuitCurrentCharacter(GameObject characterToPlaceInstead)
@@ -73,14 +74,14 @@ public class PlayerController : MonoBehaviour
         PushOutOfBody(currentCharacter, characterToPlaceInstead);
 
         //Remove from list
-        RemoveCharacterFromList(currentCharacter);
+        RemoveCharacterIconToList(currentCharacter);
 
         //Controller replacement
         currentCharacter = characterToPlaceInstead;
         
         //Remove 1
-        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
         this.changesCounter--;
+        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
     }
     public void TakeDamage()
     {
@@ -119,11 +120,11 @@ public class PlayerController : MonoBehaviour
     //     objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
     // } 
 
-    public void AddCharacterToList(GameObject obj)
+    public void AddCharacterIconToList(GameObject obj)
     {
         if(obj != null)
         {
-            characterList.Add(obj);
+            characterList.Add(obj.GetComponent<SpriteRenderer>().sprite);
         }
         else
         {
@@ -131,11 +132,11 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void RemoveCharacterFromList(GameObject obj)
+    public void RemoveCharacterIconToList(GameObject obj)
     {
         if(obj != null)
         {
-            characterList.Remove(obj);
+            characterList.Remove(obj.GetComponent<SpriteRenderer>().sprite);
         }
         else
         {
