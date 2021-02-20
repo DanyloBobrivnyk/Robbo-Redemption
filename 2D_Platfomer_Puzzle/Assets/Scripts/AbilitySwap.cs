@@ -17,14 +17,15 @@ public class AbilitySwap : MonoBehaviour
     void Start()
     {
         currentChar = this.gameObject;
-        changesCounter = PlayerController.singleton.changesCounter;
+        changesCounter = PlayerController.singleton.GetChangesCounter();
         currentCharPrev = gameObject.GetComponent<CharacterChanging>();
     }
 
     
     void Update()
     {
-        if(Input.GetButtonDown("AbilityF")  && PlayerController.singleton.changesCounter < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
+        changesCounter = PlayerController.singleton.GetChangesCounter();
+        if(Input.GetButtonDown("AbilityF")  && changesCounter < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
         {
             SwapCharacter();
         }
@@ -55,7 +56,7 @@ public class AbilitySwap : MonoBehaviour
             }
             PlayerController.singleton.AddCharacterToList(chosenCharacter);
             chosenCharacter.SetActive(false);
-            PlayerController.singleton.changesCounter++;
+            PlayerController.singleton.AddOneChangesCounter();
         }
     }
 }

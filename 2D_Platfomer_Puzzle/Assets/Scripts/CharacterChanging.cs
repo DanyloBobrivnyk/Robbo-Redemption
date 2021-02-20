@@ -14,7 +14,7 @@ public class CharacterChanging : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && PlayerController.singleton.changesCounter < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
+        if(Input.GetKeyDown(KeyCode.E) && PlayerController.singleton.GetChangesCounter() < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
         {
             ChangeCharacter();
         }

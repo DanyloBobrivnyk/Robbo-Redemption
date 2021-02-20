@@ -5,18 +5,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float pushForce = 1000;
-    public List<GameObject> characterList;
     public static PlayerController singleton {get; private set;}
+    public EventHandler OnCharacterChanged; 
+    public List<GameObject> characterList;
     public GameObject currentCharacter;
     public int changesAmount = 2;
-    public int changesCounter = 0;
+    [SerializeField] private int changesCounter = 0;
+
+    public int GetChangesCounter()
+    {
+        return changesCounter;
+    }
+    public void AddOneChangesCounter()
+    {
+       changesCounter++;
+    }
+    public void RemoveOneChangesCounter()
+    {
+        changesCounter--;
+    }
+
     private void Awake() {
         singleton = this;
     }
     private void Start() {
         AddCharacterToList(currentCharacter);
+        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
     }
+
+
     public void TurnOnCharacterControls(GameObject character)
     {
         //here must be changed all the scripts 
@@ -39,7 +56,8 @@ public class PlayerController : MonoBehaviour
         currentCharacter = chosenCharacter;
         //Add 1 to changes
         AddCharacterToList(chosenCharacter);
-        changesCounter++;
+        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
+        this.changesCounter++;
     }
 
     public void QuitCurrentCharacter(GameObject characterToPlaceInstead)
@@ -61,7 +79,8 @@ public class PlayerController : MonoBehaviour
         currentCharacter = characterToPlaceInstead;
         
         //Remove 1
-        changesCounter--;
+        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
+        this.changesCounter--;
     }
     public void TakeDamage()
     {
@@ -81,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
         
         objToPush.GetComponent<Transform>().position = pushFrom.GetComponent<Transform>().position;
-        PushObject(objToPush, opositeDir);
+        //PushObject(objToPush, opositeDir);
     }
 
     public int DetermineDirection(GameObject obj)
@@ -95,10 +114,10 @@ public class PlayerController : MonoBehaviour
         
         return dir;
     }
-    public void PushObject(GameObject objToPush, int dir)
-    {
-        objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
-    } 
+    // public void PushObject(GameObject objToPush, int dir)
+    // {
+    //     objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
+    // } 
 
     public void AddCharacterToList(GameObject obj)
     {
