@@ -67,6 +67,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -105,9 +107,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2157
-        y: 165
+        y: 174
         width: 1068
-        height: 1117
+        height: 1108
       alignment: 9
       pivot: {x: 0.38775748, y: 0.49195117}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,10 +127,10 @@ TextureImporter:
       name: IDLE_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 3912
-        y: 170
+        x: 3913
+        y: 179
         width: 1296
-        height: 1121
+        height: 1112
       alignment: 9
       pivot: {x: 0.37050563, y: 0.4812863}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,9 +149,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5613
-        y: 174
+        y: 180
         width: 1159
-        height: 1131
+        height: 1125
       alignment: 9
       pivot: {x: 0.3681274, y: 0.48410156}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,9 +170,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7323
-        y: 170
+        y: 180
         width: 1120
-        height: 1102
+        height: 1092
       alignment: 9
       pivot: {x: 0.37958986, y: 0.48640266}
       border: {x: 0, y: 0, z: 0, w: 0}

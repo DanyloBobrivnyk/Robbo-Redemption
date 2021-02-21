@@ -1232,7 +1232,7 @@ Tilemap:
     m_Data: {r: -1.5906865e+29, g: -1.5906865e+29, b: -1.5906865e+29, a: -1.5906865e+29}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_Origin: {x: -10, y: -5, z: 0}
   m_Size: {x: 18, y: 11, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -1264,6 +1264,10 @@ PrefabInstance:
     - target: {fileID: 436974240470510177, guid: bc0089bc79f2004448a1f0fb98250c47, type: 3}
       propertyPath: m_Name
       value: Character_Crouch_Disabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381445598330437589, guid: bc0089bc79f2004448a1f0fb98250c47, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5083443706173850637, guid: bc0089bc79f2004448a1f0fb98250c47, type: 3}
       propertyPath: m_RootOrder
@@ -1417,7 +1421,7 @@ Transform:
   - {fileID: 273168785}
   - {fileID: 847364694}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &847364693
 GameObject:
@@ -1901,7 +1905,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.52910286, g: 0.7735849, b: 0.73189247, a: 1}
   m_Origin: {x: -9, y: -3, z: 0}
   m_Size: {x: 17, y: 7, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -2058,7 +2062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2311404985852247751, guid: 49086f8073ac7b6489b78709bf88bdd2, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2311404985852247751, guid: 49086f8073ac7b6489b78709bf88bdd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2115,11 +2119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002604879167586870, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 6002604879167586870, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 6002604879167586870, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2153,6 +2157,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6002604879167587017, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
+      propertyPath: orthographic size
+      value: 4.555307
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002604879167587017, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002604879167587017, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.48881024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002604879167587017, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.5849056
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002604879167587017, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.03586687
+      objectReference: {fileID: 0}
     - target: {fileID: 6002604879167587018, guid: 6dd2d5b33e2a04e43af676405ca89bd1, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -2173,6 +2197,10 @@ PrefabInstance:
     - target: {fileID: 436974240470510177, guid: 12bbd92d54cbd754f8e282fd8a8d7ebf, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381445598330437589, guid: 12bbd92d54cbd754f8e282fd8a8d7ebf, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2976216340256962009, guid: 12bbd92d54cbd754f8e282fd8a8d7ebf, type: 3}
       propertyPath: playerLayers.m_Bits
