@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //HP, Changes count, current char detection,* UI Handling * 
+    public LevelLoader loader;
     private int pushForce = 1000;
     public static PlayerController singleton {get; private set;}
     public EventHandler OnCharacterChanged; 
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
        changesCounter++;
     }
-    public void RemoveOneChangesCounter()
+    public void MinusOneChangesCounter()
     {
         if(changesCounter>0)
         {
@@ -34,116 +36,78 @@ public class PlayerController : MonoBehaviour
     }
     private void Start() {
         AddCharacterIconToList(currentCharacter);
+        InvokeOnCharacterChanged();
+    }
+
+    public void InvokeOnCharacterChanged()
+    {
         OnCharacterChanged?.Invoke(this, EventArgs.Empty);
     }
 
-
-    public void TurnOnCharacterControls(GameObject character)
-    {
-        //here must be changed all the scripts 
-        character.GetComponent<CharacterChanging>().TurnOnCharacterScripts(); 
-    }
-    public void TurnOffCharacterControls(GameObject character)
-    {
-        //here must be changed all the scripts 
-        character.GetComponent<CharacterChanging>().TurnOffCharacterScripts(); 
-    }
-
-    public void ChangeCharacter(GameObject chosenCharacter)
-    {
-        //Turn on controls at second char
-        TurnOnCharacterControls(chosenCharacter);
-        //Turn off current character
-        currentCharacter.SetActive(false);
-        //Replace current by second
-        chosenCharacter.GetComponent<CharacterChanging>().previousCharacter = currentCharacter; 
-        currentCharacter = chosenCharacter;
-        //Add 1 to changes
-        AddCharacterIconToList(chosenCharacter);
-        this.changesCounter++;
-        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void QuitCurrentCharacter(GameObject characterToPlaceInstead)
-    {
-        //Turn off current character controls
-        TurnOffCharacterControls(currentCharacter);
-
-        //Turn On new Char
-        characterToPlaceInstead.SetActive(true);
-        TurnOnCharacterControls(characterToPlaceInstead);
-
-        //Place new char nearby
-        PushOutOfBody(currentCharacter, characterToPlaceInstead);
-
-        //Remove from list
-        RemoveCharacterIconToList(currentCharacter);
-
-        //Controller replacement
-        currentCharacter = characterToPlaceInstead;
-        
-        //Remove 1
-        this.changesCounter--;
-        OnCharacterChanged?.Invoke(this, EventArgs.Empty);
-    }
     public void TakeDamage()
     {
-        Debug.Log("Damage taken");
+        loader.ReloadThisLevel();
     }
 
-    private void PushOutOfBody(GameObject pushFrom, GameObject objToPush)
+    public void AddCharacterIconToList(GameObject obj)
     {
-        
-        var dir = DetermineDirection(pushFrom);
-        var opositeDir = dir*(-1);
-        var rotationValue = opositeDir*180;
-        //Should it be replaced ? 
-        
-        //Push curr char in oposite dir
-        objToPush.GetComponent<Transform>().rotation.SetEulerAngles(0,rotationValue,0);
+        if(obj != null)
+        {
+            characterList.Add(obj.GetComponent<AbilityController>().ability.characterIcon);
+        }
+        else
+        {
+            Debug.Log("Adding error, tried to add null");
+        }
+    }
 
-        
-        objToPush.GetComponent<Transform>().position = pushFrom.GetComponent<Transform>().position;
-        PushObject(objToPush, opositeDir);
+    public void RemoveCharacterIconFromList(GameObject obj)
+    {
+        if(obj != null)
+        {
+            foreach (var item in characterList)
+            {
+                if(item == obj.GetComponent<AbilityController>().ability.characterIcon)
+                {
+                    characterList.Remove(item);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            
+        }
+        else
+        {
+            Debug.Log("Adding error, tried to add null");
+        }
     }
 
     public int DetermineDirection(GameObject obj)
     {
         float rotDirection = obj.GetComponent<Transform>().localRotation.y;
-        Debug.Log("Y:" + rotDirection);
-
         
         var dir = rotDirection == -1 ? -1 : 1;
         //if 0 return -1 (left) if 180 means (right) and return 1
         
         return dir;
     }
-    public void PushObject(GameObject objToPush, int dir)
-    {
-        objToPush.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * pushForce, 300));
-    } 
 
-    public void AddCharacterIconToList(GameObject obj)
+    public void MakeThisEnabled(GameObject gameObject)
     {
-        if(obj != null)
-        {
-            characterList.Add(obj.GetComponent<SpriteRenderer>().sprite);
-        }
-        else
-        {
-            Debug.Log("Adding error, tried to add null");
-        }
+        Animator animator = gameObject.GetComponent<Animator>();
+        Debug.Log(animator.name);
+        if(PlayerController.singleton.currentCharacter == this.gameObject)
+        animator.SetBool("Enabled", true);
     }
+    public void MakeThisDisabled(GameObject gameObject)
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        if(PlayerController.singleton.currentCharacter == this.gameObject)
+        animator.SetBool("Enabled", false);
+    }
+    //------------------------------------------
     
-    public void RemoveCharacterIconToList(GameObject obj)
-    {
-        if(obj != null)
-        {
-            characterList.Remove(obj.GetComponent<SpriteRenderer>().sprite);
-        }
-        else
-        {
-            Debug.Log("Adding error, tried to add null");
-        }
-    }
 }

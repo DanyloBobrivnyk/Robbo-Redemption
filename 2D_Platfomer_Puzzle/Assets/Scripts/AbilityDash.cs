@@ -7,6 +7,8 @@ public class AbilityDash : MonoBehaviour
     private Rigidbody2D rb;
     private float dashTime;
     private int direction;
+    private Animator animator;
+    private bool inputCheck = false;
 //It should be changed !!!
     private int immortalLayer = 4;
     private int playerLayer = 10;
@@ -16,6 +18,8 @@ public class AbilityDash : MonoBehaviour
 
 
     private void Start() {
+        animator = gameObject.GetComponent<Animator>();
+        this.gameObject.GetComponent<AbilityController>().OnAbilityUsed += AbilityDash_OnAbilityUsed;
         rb = gameObject.GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
     }
@@ -23,9 +27,11 @@ public class AbilityDash : MonoBehaviour
     {
         if(direction == 0)
         {
-            if(Input.GetButtonDown("AbilityF"))
+            if(inputCheck)
             {
                 direction = PlayerController.singleton.DetermineDirection(gameObject);
+                animator.SetBool("IsDashing",true);
+                inputCheck = false;
             }
         }
         else
@@ -36,6 +42,7 @@ public class AbilityDash : MonoBehaviour
                 dashTime = startDashTime;
                 rb.velocity = Vector2.zero;
                 gameObject.layer = playerLayer;
+                animator.SetBool("IsDashing",false);
             }
             else                
             {
@@ -55,4 +62,8 @@ public class AbilityDash : MonoBehaviour
         
     }
 
+    private void AbilityDash_OnAbilityUsed(object sender, System.EventArgs e)
+    {
+        inputCheck = true;
+    } 
 }

@@ -12,12 +12,10 @@ public class UICharacterPanel : MonoBehaviour
 
     void Start()
     {
-        UpdateUIBackgrounds();
-    }
-    private void Awake() {
         PlayerController.singleton.OnCharacterChanged += UICharacterPanel_OnCharacterChanged;
         containerAmount = PlayerController.singleton.changesAmount;
         containerAmount++;
+        UpdateUIBackgrounds();
     }
     private void UICharacterPanel_OnCharacterChanged(object sender, System.EventArgs e)
     {

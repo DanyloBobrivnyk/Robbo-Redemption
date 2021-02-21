@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
@@ -11,9 +11,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
-	const float k_GroundedRadius = 0.2f; // Radius of the overlap circle to determine if grounded
+	const float k_GroundedRadius = 0.15f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
-	const float k_CeilingRadius = 0.2f; // Radius of the overlap circle to determine if the player can stand up
+		const float k_CeilingRadius = 0.15f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
@@ -40,7 +40,7 @@ public class CharacterController2D : MonoBehaviour
 			OnCrouchEvent = new BoolEvent();
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
@@ -136,6 +136,48 @@ public class CharacterController2D : MonoBehaviour
 		// Multiply the player's x local scale by -1.
 		transform.Rotate(0f, 180f, 0f);
 	}
+	public void TurnOnCharacterScripts()
+    {
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+		//TODO FIX it 
+		var animator = gameObject.GetComponent<Animator>();
+		animator.enabled = true;
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            if(scriptName != "CharacterChanging")
+            {
+                script.enabled = true;
+            }
+            
+        }
+    }
 
+    public void TurnOffCharacterScripts()
+    {
+        //Change those scripts state
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
 
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            if(scriptName != "CharacterChanging")
+            {
+                script.enabled = false;
+            }
+            
+        }
+    }
+
+    private void GetScriptsInObject()
+    {
+        var scripts = gameObject.GetComponents<MonoBehaviour>();
+    
+        foreach (MonoBehaviour script in scripts)
+        {
+            string scriptName = script.GetType().ToString();
+            //Do whatever you want with script component
+            
+        }
+    }
 }
