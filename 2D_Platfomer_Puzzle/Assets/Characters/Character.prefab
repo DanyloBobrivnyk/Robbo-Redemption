@@ -207,7 +207,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 512
   m_GroundCheck: {fileID: 1866070016055141887}
   m_CeilingCheck: {fileID: 1737977238}
   m_CrouchDisableCollider: {fileID: 2984553008103828554}
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2264052847be54a841be87a71eab77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 473812836}
   animator: {fileID: 1061566843}
 --- !u!95 &1061566843
 Animator:
@@ -375,7 +376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3905349875543068765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: -0.912, z: 0}
+  m_LocalPosition: {x: -0.13, y: -0.985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}

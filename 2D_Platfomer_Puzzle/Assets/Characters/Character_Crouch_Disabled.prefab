@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1737977238}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: CellingCheck
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 3874185123718216330}
   - component: {fileID: 566970949}
   - component: {fileID: 3173203204763082575}
+  - component: {fileID: 1294318224}
   m_Layer: 10
   m_Name: Character_Crouch_Disabled
   m_TagString: Untagged
@@ -160,10 +161,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.04684645}
+  m_Offset: {x: 0, y: 0.006997943}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.7}
     oldSize: {x: 3.0839834, y: 1.3320312}
     newSize: {x: 2.0625, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -171,7 +172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7174333, y: 1.0560149}
+  m_Size: {x: 0.7174333, y: 1.1357119}
   m_EdgeRadius: 0
 --- !u!58 &2127689119779344170
 CircleCollider2D:
@@ -186,7 +187,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.48}
+  m_Offset: {x: 0, y: -0.56}
   serializedVersion: 2
   m_Radius: 0.3529315
 --- !u!114 &3740343364447640626
@@ -207,25 +208,13 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 6967
   m_GroundCheck: {fileID: 1866070016055141887}
   m_CeilingCheck: {fileID: 1737977238}
   m_CrouchDisableCollider: {fileID: 2984553008103828554}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AbilityJump, Assembly-CSharp
-        m_MethodName: OnLanding
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -320,7 +309,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce373207d4559d48a2537b859f26193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1061566843}
+--- !u!114 &1294318224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436974240470510177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87832a972aca42d4a80b83066b463a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDashTime: 0.5
+  dashPower: 20
 --- !u!1 &2428268190371929241
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918360440624265032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: InfestRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866070016055141887}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -390,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 335300210759037826}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: AtackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}

@@ -36,6 +36,7 @@ public class Hook : MonoBehaviour
         if(gotIt == true && timer > 1)
         {
             HookObject();
+            PlayerController.singleton.currentCharacter.GetComponent<AbilityHook>().FinishHookAnimation();
         }
     }
 

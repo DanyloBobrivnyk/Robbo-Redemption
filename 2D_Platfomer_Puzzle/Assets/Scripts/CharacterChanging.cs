@@ -11,7 +11,6 @@ public class CharacterChanging : MonoBehaviour
     public float changeRange;
     public LayerMask playerLayers;
     private GameObject chosenCharacter;
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && PlayerController.singleton.GetChangesCounter() < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
@@ -55,6 +54,7 @@ public class CharacterChanging : MonoBehaviour
                     //Add all the info into controller
                     PlayerController.singleton.AddCharacterIconToList(chosenCharacter);
                     PlayerController.singleton.AddOneChangesCounter();
+                    chosenCharacter.GetComponent<CharacterChanging>().MakeThisEnabled();
                     PlayerController.singleton.InvokeOnCharacterChanged();
                     break;
                 }
@@ -90,6 +90,7 @@ public class CharacterChanging : MonoBehaviour
             //
             PlayerController.singleton.RemoveCharacterIconFromList(this.gameObject);
             PlayerController.singleton.MinusOneChangesCounter();
+            MakeThisDisabled();
             PlayerController.singleton.InvokeOnCharacterChanged();
         }
         else
@@ -118,4 +119,16 @@ public class CharacterChanging : MonoBehaviour
         objToPlace.GetComponent<Rigidbody2D>().AddForce(new Vector2(opositeDir*1000, 300));
     }
     
+
+    public void MakeThisEnabled()
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        if(PlayerController.singleton.currentCharacter == this.gameObject)
+        animator.SetBool("Enabled", true);
+    }
+    public void MakeThisDisabled()
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        animator.SetBool("Enabled", false);
+    }
 }

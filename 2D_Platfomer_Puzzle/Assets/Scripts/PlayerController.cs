@@ -93,6 +93,20 @@ public class PlayerController : MonoBehaviour
         
         return dir;
     }
+
+    public void MakeThisEnabled(GameObject gameObject)
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        Debug.Log(animator.name);
+        if(PlayerController.singleton.currentCharacter == this.gameObject)
+        animator.SetBool("Enabled", true);
+    }
+    public void MakeThisDisabled(GameObject gameObject)
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        if(PlayerController.singleton.currentCharacter == this.gameObject)
+        animator.SetBool("Enabled", false);
+    }
     //------------------------------------------
     
 }
