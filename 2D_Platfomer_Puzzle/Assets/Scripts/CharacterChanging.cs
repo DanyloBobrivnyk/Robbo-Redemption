@@ -74,7 +74,7 @@ public class CharacterChanging : MonoBehaviour
         //Check prev. character
         if(characterToPlaceInstead != null)
         {
-            Debug.Log("Quit func");
+            // Debug.Log("Quit func");
             //Turn off current movement
             this.gameObject.GetComponent<CharacterController2D>().TurnOffCharacterScripts();
 
@@ -108,7 +108,7 @@ public class CharacterChanging : MonoBehaviour
     }
     private void PlaceNearby(GameObject onjToBeNear, GameObject objToPlace)
     {
-        Debug.Log("Place fnc");
+        // Debug.Log("Place fnc");
         var sourceObjDir = PlayerController.singleton.DetermineDirection(onjToBeNear);
         var childObjDir = PlayerController.singleton.DetermineDirection(objToPlace);
         var opositeDir = sourceObjDir * -1;
