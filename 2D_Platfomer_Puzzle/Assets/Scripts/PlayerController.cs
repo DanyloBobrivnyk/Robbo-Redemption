@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //HP, Changes count, current char detection,* UI Handling * 
+    public LevelLoader loader;
     private int pushForce = 1000;
     public static PlayerController singleton {get; private set;}
     public EventHandler OnCharacterChanged; 
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("Damage taken");
+        loader.ReloadThisLevel();
     }
 
     public void AddCharacterIconToList(GameObject obj)

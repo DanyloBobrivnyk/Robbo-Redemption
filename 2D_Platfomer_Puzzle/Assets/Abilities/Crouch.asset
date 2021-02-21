@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterIcon: {fileID: 4042684821116716558, guid: 3ba4f9ee57cda8949833e4a121116240, type: 3}
   abilityName: Dash
-  abilityDescription: you dash [F]
+  abilityDescription: Dash ability. When you are dashing, you are immortal [F]
   passiveAbilityName: Crouch
-  passiveAbilityDescription: You can crouch [S]
+  passiveAbilityDescription: Your body construction allows you to crouch [S]
   abilityIcon: {fileID: 21300000, guid: eb39727dc8c6d3d41b8c47bf8ef1c8cc, type: 3}
   passiveAbilityIcon: {fileID: 21300000, guid: 5634ced07abdc1f4bb269112598339ee, type: 3}
