@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 8
   m_Name: CellingCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737977237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.135, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0.639, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}
@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1061566843}
   - component: {fileID: 2976216340256962009}
   - component: {fileID: 3874185123718216330}
+  - component: {fileID: 566970949}
   m_Layer: 10
   m_Name: Character
   m_TagString: Untagged
@@ -114,9 +115,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
+  m_Sprite: {fileID: -8892358551082812620, guid: 2087083322e8ce84c92598b6bfee9776, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.0625, y: 2}
@@ -159,18 +160,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.104913116}
+  m_Offset: {x: -0.15, y: 0.15614295}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.0625, y: 2}
+    pivot: {x: 0.37958986, y: 0.48640266}
+    oldSize: {x: 2.1902738, y: 2.1523438}
     newSize: {x: 2.0625, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83306164, y: 0.7626091}
+  m_Size: {x: 0.7174333, y: 1.522028}
   m_EdgeRadius: 0
 --- !u!58 &2127689119779344170
 CircleCollider2D:
@@ -185,9 +186,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.57}
+  m_Offset: {x: -0.15331924, y: -0.6}
   serializedVersion: 2
-  m_Radius: 0.42552775
+  m_Radius: 0.3529315
 --- !u!114 &3740343364447640626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,13 +207,25 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 512
   m_GroundCheck: {fileID: 1866070016055141887}
   m_CeilingCheck: {fileID: 1737977238}
   m_CrouchDisableCollider: {fileID: 2984553008103828554}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3376740025750066382}
+        m_TargetAssemblyTypeName: AbilityJump, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -279,9 +292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previousCharacter: {fileID: 0}
-  scriptsArray: []
   changePoint: {fileID: 2918360440624265032}
-  changeRange: 0.3
+  changeRange: 1
   playerLayers:
     serializedVersion: 2
     m_Bits: 1024
@@ -297,6 +309,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62a1397525348b4698c05ecd63dd3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &566970949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436974240470510177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39dbebc4ca13994da5a813bf63f0cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: b5d8615ce1b679a4b86173da69bcbb71, type: 2}
 --- !u!1 &2428268190371929241
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918360440624265032}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: InfestRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2428268190371929241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -0.43, z: 0}
+  m_LocalPosition: {x: 0.36, y: -0.095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}
@@ -339,7 +364,7 @@ GameObject:
   m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -351,7 +376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3905349875543068765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.977, z: 0}
+  m_LocalPosition: {x: -0.13, y: -0.985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}
@@ -367,9 +392,9 @@ GameObject:
   m_Component:
   - component: {fileID: 335300210759037826}
   m_Layer: 8
-  m_Name: AtackRadius
+  m_Name: AtackPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -381,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7601776980645463059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -0.43, z: 0}
+  m_LocalPosition: {x: 0.715, y: -0.239, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5083443706173850637}

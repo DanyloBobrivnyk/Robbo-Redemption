@@ -7,8 +7,6 @@ public class AbilitySwap : MonoBehaviour
     public Transform swapPoint;
     public float swapRange;
     public LayerMask playerLayers;
-
-    CharacterChanging currentCharPrev;
     private GameObject chosenCharacter;
     private GameObject currentChar;
     private int changesCounter;
@@ -16,15 +14,15 @@ public class AbilitySwap : MonoBehaviour
 
     void Start()
     {
+        this.gameObject.GetComponent<AbilityController>().OnAbilityUsed += AbilitySwap_OnAbilityUsed;
         currentChar = this.gameObject;
-        changesCounter = PlayerController.singleton.changesCounter;
-        currentCharPrev = gameObject.GetComponent<CharacterChanging>();
+        changesCounter = PlayerController.singleton.GetChangesCounter();
     }
 
-    
-    void Update()
+    private void AbilitySwap_OnAbilityUsed(object sender, System.EventArgs e)
     {
-        if(Input.GetButtonDown("AbilityF")  && PlayerController.singleton.changesCounter < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
+        changesCounter = PlayerController.singleton.GetChangesCounter();
+        if(changesCounter < PlayerController.singleton.changesAmount && this.gameObject == PlayerController.singleton.currentCharacter)
         {
             SwapCharacter();
         }
@@ -33,29 +31,48 @@ public class AbilitySwap : MonoBehaviour
     private void SwapCharacter()
     {
         Collider2D[] chosenCharacters = Physics2D.OverlapCircleAll(swapPoint.position, swapRange, playerLayers);
-
+        
+        
         if(chosenCharacters.Length == 0)
         {
             Debug.Log("No characters in radius to swap");
         }
-        else  
+        else
         {
             //Choose character get access to his prev char 
-            chosenCharacter = chosenCharacters[0].gameObject;
-            CharacterChanging chosenCharPrev = chosenCharacter.GetComponent<CharacterChanging>();
-            
-            if(currentCharPrev == null)
+            chosenCharacter = ChooseNotCurrent(chosenCharacters);
+            if(chosenCharacter != null)
             {
-                currentCharPrev.previousCharacter = chosenCharacter;
-            }    
-            else
-            {   
-                chosenCharPrev.previousCharacter = currentCharPrev.previousCharacter;
-                currentCharPrev.previousCharacter = chosenCharacter;
+                GameObject chosenCharPrev = chosenCharacter.GetComponent<CharacterChanging>().previousCharacter;
+                if(currentChar.GetComponent<CharacterChanging>().previousCharacter == null)
+                {
+                    currentChar.GetComponent<CharacterChanging>().previousCharacter = chosenCharacter;
+                }    
+                else 
+                {   
+                    chosenCharPrev = currentChar.GetComponent<CharacterChanging>().previousCharacter;
+                    
+                    currentChar.GetComponent<CharacterChanging>().previousCharacter = chosenCharacter;
+                }
+                PlayerController.singleton.AddCharacterIconToList(chosenCharacter);
+                chosenCharacter.SetActive(false);
+                PlayerController.singleton.AddOneChangesCounter();
             }
-
-            chosenCharacter.SetActive(false);
-            PlayerController.singleton.changesCounter++;
         }
+    }
+    private GameObject ChooseNotCurrent(Collider2D[] array)
+    {
+        foreach (Collider2D character in array)
+        {
+            if(character.gameObject != PlayerController.singleton.currentCharacter)
+            {
+                return character.gameObject;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        return null;
     }
 }

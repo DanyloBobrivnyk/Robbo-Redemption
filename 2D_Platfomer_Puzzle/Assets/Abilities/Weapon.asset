@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd6f2e0919b2d840bf81bdd6280b6e7, type: 3}
+  m_Name: Weapon
+  m_EditorClassIdentifier: 
+  characterIcon: {fileID: 21300000, guid: 14ef4bf8bc0e3714b892dd2e9cec16bf, type: 3}
+  abilityName: Weaponry
+  abilityDescription: 13.2mm machine gun installed intto robot's hand. Use it ! [F]
+  passiveAbilityName: Jump pistons
+  passiveAbilityDescription: Reinforced steel pistons gives you abillity to jump.
+    Use it ! [SPACE]
+  abilityIcon: {fileID: 21300000, guid: cb96838fd6f1f6c419fef739f21d92a6, type: 3}
+  passiveAbilityIcon: {fileID: 21300000, guid: 49cdf9344de27ca48b92cbbbd736467d, type: 3}

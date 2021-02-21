@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bfc4c24a5e9cf41ba8eb096f2e791d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loader: {fileID: 991088954639218265, guid: cd53b529b15a34d4d8d55e7cb2f9f164, type: 3}
+  characterList: []
   currentCharacter: {fileID: 0}
   changesAmount: 2
   changesCounter: 0
